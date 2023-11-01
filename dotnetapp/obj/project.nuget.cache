@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "qrWLiBEFe2+3jMk5wsE2x/cGVZZnIp/8vRALT95KFAPS5LjO7OsxMthQXvc/xicLsJSZTD7oS2tN5/tRsYU+4g==",
+  "dgSpecHash": "fyU7ingMMnsfUtQFCjBGwJLpuixjviFqQHRZD4M7BBQBTVvcuYmHF2CLhyr2FbPBu7RJUrS1N2U0FFbrXKdouw==",
   "success": true,
   "projectFilePath": "/home/coder/project/workspace/dotnetapp/dotnetapp.csproj",
   "expectedPackageFiles": [
     "/home/coder/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/home/coder/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
     "/home/coder/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/home/coder/.nuget/packages/microsoft.aspnetcore.metadata/7.0.13/microsoft.aspnetcore.metadata.7.0.13.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.data.sqlclient/5.1.1/microsoft.data.sqlclient.5.1.1.nupkg.sha512",
