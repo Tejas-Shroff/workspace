@@ -1,45 +1,50 @@
 @model IEnumerable<EMS.Models.Department>
 <h1> This is Department List </h1>
 <hr>
-<h1>@Html.ActionLink("AddDepartment","Create")</h1>
+<h1>
+    @Html.ActionLink("AddDepartment","Create")
+</h1>
 <hr>
 
-<table class = 'table'>
+<table class='table'>
 
-        <thead>
-            <th>@Html.DisplayNameFor(d=>d.Id)</th>
-            
-            <th>@Html.DisplayNameFor(d=>d.DeptName)</th>
-            
-            <th>@Html.DisplayNameFor(d=>d.Location)</th>
-        </thead>
+    <thead>
+        <th>@Html.DisplayNameFor(d=>d.Id)</th>
 
-        <tbody>
-            @foreach(var Dept in @Model){
+        <th>@Html.DisplayNameFor(d=>d.DeptName)</th>
 
-                <tr>
-                    <td>
-                        @Dept.Id
-                    </td>
-                    <td>
-                        @Dept.DeptName
-                    </td>
-                    <td>
-                        @Dept.Location
-                    </td>
-                    <td>
+        <th>@Html.DisplayNameFor(d=>d.Location)</th>
+    </thead>
 
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details","Display",new {id=Dept.Id}) &nbsp;&nbsp;
-                        @Html.ActionLink("Edit","Edit",new {id=Dept.Id}) &nbsp;&nbsp;
-                        @Html.ActionLink("Delete","Delete",new {id=Dept.Id}) &nbsp;&nbsp;
-                    
-                </tr>
+    <tbody>
+        @foreach (var Dept in @Model){
 
+            <tr>
+                <td>
+                    @Dept.Id
+                </td>
+                <td>
+                    @Dept.DeptName
+                </td>
+                <td>
+                    @Dept.Location
+                </td>
                 
-            }
+                <td>
 
-        </tbody>
+                    @Html.ActionLink("Details","Display",new {id=Dept.Id}) &nbsp;&nbsp;
+
+                    @Html.ActionLink("Edit","Edit",new {id=Dept.Id}) &nbsp;&nbsp;
+
+                    @Html.ActionLink("Delete","Delete",new {id=Dept.Id}) &nbsp;&nbsp;
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
 
 </table>
+
+
