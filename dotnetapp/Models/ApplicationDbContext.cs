@@ -10,7 +10,7 @@ public class ApplicationDbContext : DbContext{
     public ApplicationDbContext(){
 
     }
-    public virtual DbSet<Dealer>?Dealer {get ;set;}
+    public virtual DbSet<Dealer>Dealer {get ;set;}
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options){
 
     }

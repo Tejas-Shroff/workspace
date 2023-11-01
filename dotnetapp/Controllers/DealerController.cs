@@ -15,7 +15,8 @@ public class DealerControllers : Controller {
         context=_context;
     }
 
-    public IActionResult List(){
+    public IActionResult Index(){
+        var data = context.Dealer.ToList();
         return View();
     }
     public IActionResult Create(){
@@ -26,22 +27,22 @@ public class DealerControllers : Controller {
         if(ModelState.IsValid){
             context.Dealer.Add(d);
             context.SaveChanges();
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
 
         }
         return View();
     }
     public IActionResult Delete(int ID){
-        var data = context.Dealer.Find(id);
+        var data = context.Dealer.Find(ID);
         return View(data);
     }
     [HttpPost]
     public IActionResult Delete(Dealer d){
 
-        Dealer dl = context.Dealer.Find(d.ID);
+        // Dealer dl = context.Dealer.Find(d.ID);
         context.Dealer.Remove(d);
-        context.Dealer.SaveChanges();
-        return RedirectToAction()
+        context.SaveChanges();
+        return RedirectToAction("Index");
       
     }
 
