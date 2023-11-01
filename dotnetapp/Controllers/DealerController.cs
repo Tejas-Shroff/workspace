@@ -11,5 +11,12 @@ public class DealerControllers : Controller {
         context=_context;
     }
 
+    public IActionResult List(){
+        return View();
+    }
+    public IActionResult Create()[
+         
+    ]
+
 }
 
