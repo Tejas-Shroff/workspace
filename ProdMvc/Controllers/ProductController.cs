@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using ProdMvc.Models;
 
 namespace ProdMvc.Controllers;
-
     public class ProductController : Controller{
         private readonly TejDbContext context;
         public ProductController(TejDbContext  _context){
