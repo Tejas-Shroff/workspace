@@ -22,11 +22,12 @@ public partial class Employee
 
     [Display(Name =" Email")]
     [DataType(DataType.EmailAddress)]
-    
+
     public string? Email { get; set; } = null!;
 
     [DataType(DataType.Date)]
     [DisplayFormat(ApplyFormatInEditMode=true,DataFormatString="{0:yyyy-mm-dd}")]
+    
     [DobCheck(ErrorMessage="You should be 25 years of age to work in LTI")]
 
     public DateTime Dob { get; set; }
