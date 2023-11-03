@@ -13,9 +13,10 @@ public class FruitsController : ControllerBase{
         return Fruits;
     }
 
-    
+
     public string GetFruits(int id){
-        return[id];
+        return Fruits[id];
     }
+    public void P
 
 }
