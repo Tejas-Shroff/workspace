@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MovieApp.Models;
 namespace MovieApp.Controllers{
 
     [ApiController]
@@ -28,6 +29,23 @@ namespace MovieApp.Controllers{
             }
             return Ok(data);
             
+        }
+        [HttpPost]
+        [Route("AddMovie")]
+        public IActionResult Post (Movie movie){
+            if(ModelState.IsValid){
+                try{
+                    context.Movies.Add(movie);
+                    context.SaveChanges();
+                    
+                }
+                catch(System.Exception ex){
+
+                    return BadRequest(ex.InnerException.Message);
+
+                }
+            }
+            return Created("Record Added", movie);
         }
     }
 }
