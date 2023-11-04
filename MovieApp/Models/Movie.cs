@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace MovieApp.Models{
 
     public class Movie{
+        
 
         [Key]
         public int Id { get; set; }
@@ -19,4 +20,6 @@ namespace MovieApp.Models{
 
 
     }
+    
+
 }
