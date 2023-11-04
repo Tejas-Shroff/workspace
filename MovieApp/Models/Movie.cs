@@ -15,7 +15,7 @@ namespace MovieApp.Models{
 
         public int Rating { get; set; }
 
-        
+        public ICollection<Detail> Details { get; set; }
 
 
     }
