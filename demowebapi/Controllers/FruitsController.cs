@@ -38,9 +38,7 @@ namespace demowebapi.Controllers{
 
             Fruits.RemoveAt(id);
 
-        }
-            
-
+        }  
     }
 }
 
