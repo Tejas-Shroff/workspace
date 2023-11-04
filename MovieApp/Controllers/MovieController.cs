@@ -46,6 +46,7 @@ namespace MovieApp.Controllers{
                 }
             }
             return Created("Record Added", movie);
+            
         }
     }
 }
