@@ -2,11 +2,11 @@ namespace MovieApp.Models;
 using Microsoft.EntityFramewrokCore;
 
 public class MovieContext : DbContext{
+    public virtual DbSet<Detail> Details { get; set; }
+    public virtual DbSet<Movie> Movies { get; set; }
     public MovieContext(){
 
     }
-    public virtual DbSet<Detail> Details { get; set; }
-    public virtual DbSet<Movie> Movies { get; set; }
     public MovieContext(DbContextOptions<MovieContext> options) : base(options){
 
     }
