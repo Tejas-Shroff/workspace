@@ -33,7 +33,7 @@ namespace MovieApp.Controllers{
         [HttpPost]
         [Route("AddMovie")]
         public IActionResult Post (Movie movie){
-            
+
             if(ModelState.IsValid){
 
                 try{
@@ -53,6 +53,11 @@ namespace MovieApp.Controllers{
 
             return Created("Record Added", movie);
 
+        } 
+        [HttpPut]
+        [Route("EditMovie/{id}")]
+        public IActionResult (int id, movie movie){
+            
         }
     }
 }
