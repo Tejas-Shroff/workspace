@@ -16,41 +16,51 @@ namespace MoviesApp.Controllers{
         [HttpGet]
         [Route("DisplayMovieDetails/(id)")]
  
-        public IActionResult Get(int id)
-        {
+        public IActionResult Get(int id){
+
             var data = from d in context.Details where d.MovieId == id select new{
                 Artist = d.Actor, Role=d.Role,MovieName=d.Movie.Name,Year = d.Movie.YearRelease};
                 return Ok(data);
+                
         }
+
         [HttpGet]
         [Route("ListDetail")]
  
-        public IActionResult Get()
-        {
+        public IActionResult Get(){
+
             var data = from d in context.Details select new {MovieName=d.Movie.Name,Artist=d.Actor};
             return Ok(data);
+
         }
+
         [HttpGet]
         [Route("ListDetails/{id}")]
  
 
  
-        public IActionResult Get(int? id)
-        {
+        public IActionResult Get(int? id){
+
             if(id==null){
+
                 return BadRequest("Id cannot be null");
+
             }
 
             var data = (from d in context.Details where d.MovieId ==id select d).FirstOrDefault();
 
             if(id==null){
+
                 return NotFound($"Detail {id} not found");
             }
+
             return Ok(data);
         }
 
+
          [HttpPost]
         [Route("AddDetails")]
+
 
         public IActionResult Post([FromBody] Detail detail){
 
@@ -67,8 +77,8 @@ namespace MoviesApp.Controllers{
                 catch(System.Exception ex){
 
                     return BadRequest(ex.InnerException.Message);    
-                    
-                          
+
+                      
                 }
 
             }
