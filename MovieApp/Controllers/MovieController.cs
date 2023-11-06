@@ -1,63 +1,165 @@
-using Microsoft.AspNetCore.Mvc;
-using MovieApp.Models;
-namespace MovieApp.Controllers{
+// using Microsoft.AspNetCore.Mvc;
+// using MovieApp.Models;
+// namespace MovieApp.Controllers{
 
-    [ApiController]
-    [Route("/[controller]")]
-    public class MovieController : ControllerBase{
-        MovieContext context = new MovieContext();
-        [HttpGet]
-        [Route("ListMovies")]
-        public IActionResult Get(){
-            var data = from m in context.Movies select m;
+//     [ApiController]
+//     [Route("/[controller]")]
+//     public class MovieController : ControllerBase{
+//         MovieContext context = new MovieContext();
+//         [HttpGet]
+//         [Route("ListMovies")]
+//         public IActionResult Get(){
+//             var data = from m in context.Movies select m;
 
-            return Ok(data);
+//             return Ok(data);
 
 
-        }
-        [HttpGet]
-        [Route("ListMovies/{id}")]
-        public IActionResult Get(int id){
-            if(id == null){
-                return BadRequest("Id cannot be null");
+//         }
+//         [HttpGet]
+//         [Route("ListMovies/{id}")]
+//         public IActionResult Get(int id){
+//             if(id == null){
+//                 return BadRequest("Id cannot be null");
 
-            }
-            var data = (from m in context.Movies where m.Id == id select m ).FirstOrDefault();
-            if(data == null){
-                return NotFound($"Movie {id} not found");
+//             }
+//             var data = (from m in context.Movies where m.Id == id select m ).FirstOrDefault();
+//             if(data == null){
+//                 return NotFound($"Movie {id} not found");
 
-            }
-            return Ok(data);
+//             }
+//             return Ok(data);
             
-        }
-        [HttpPost]
-        [Route("AddMovie")]
-        public IActionResult Post (Movie movie){
+//         }
+//         [HttpPost]
+//         [Route("AddMovie")]
+//         public IActionResult Post (Movie movie){
 
-            if(ModelState.IsValid){
+//             if(ModelState.IsValid){
 
-                try{
+//                 try{
 
-                    context.Movies.Add(movie);
-                    context.SaveChanges();
+//                     context.Movies.Add(movie);
+//                     context.SaveChanges();
                     
-                }
+//                 }
                 
-                catch(System.Exception ex){
+//                 catch(System.Exception ex){
 
-                    return BadRequest(ex.InnerException.Message);
+//                     return BadRequest(ex.InnerException.Message);
 
-                }
+//                 }
 
-            }
+//             }
 
-            return Created("Record Added", movie);
+//             return Created("Record Added", movie);
 
-        } 
-        [HttpPut]
-        [Route("EditMovie/{id}")]
-        public IActionResult (int id, movie movie){
+//         } 
+//         [HttpPut]
+//         [Route("EditMovie/{id}")]
+//         public IActionResult (int id, movie movie){
             
-        }
+//         }
+//     }
+// }
+
+
+
+using MovieApp.Models;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+ 
+namespace MovieApp.Controllers
+{
+    [ApiController]
+        [Route("/[controller]")]
+    public class MovieController:ControllerBase
+    {
+       
+     
+            MovieContext context= new MovieContext();
+            [HttpGet]
+            [Route("ListMovies")]
+            public IActionResult Get()
+            {
+                //var data= context.Movies.ToList();
+                var data=from m in context.Movies select m;
+                return Ok(data);
+            }
+            [HttpPost]
+            [Route("ListMovies/{id}")]
+            public IActionResult Get(int id)
+            {
+                if(id==null)
+                {
+                    return BadRequest("Id cannot be null");
+ 
+                }
+                var data =(from m in context.Movies where m.Id == id select m).FirstOrDefault();
+                if(id==null)
+                {
+                    return NotFound($"Movie {id} not found");
+                }
+                return Ok(data);
+            }
+            [HttpPost]
+            [Route("AddMovie")]
+            public IActionResult Post(Movie movie)
+            {
+                if(ModelState.IsValid)
+                {
+                    try
+                    {
+                        context.Movies.Add(movie);
+                        context.SaveChanges();
+ 
+                    }
+                    catch(System.Exception ex)
+                    {
+                        return BadRequest(ex.InnerException.Message);
+                    }
+ 
+                }
+                return Created("Record Added",movie);
+            }
+            [HttpPost]
+            [Route("EditMovie/{id}")]
+            public IActionResult Put(int id,Movie movie)
+            {
+                if(ModelState.IsValid)
+                {
+                    Movie omovie= context.Movies.Find(id);
+                    omovie.Name=movie.Name;
+                    omovie.Rating=movie.Rating;
+                    omovie.YearRelease=movie.YearRelease;
+                    context.SaveChanges();
+                    return Ok();
+                }
+                return BadRequest("Unable to Edit Record");
+            }
+            [HttpDelete]
+            [Route("DeleteMovie/{id}")]
+            public IActionResult Delete(int id)
+            {
+                try
+                {
+                    var detail=context.Details.Where(d=>d.MovieId==id);
+                    if(detail.Count() !=0)
+                    {
+                        throw new System.Exception("Cannot Delete Movie");
+                    }
+                    var data=context.Movies.Find(id);
+                    context.Movies.Remove(data);
+                    context.SaveChanges();
+                    return Ok();
+                }
+                catch(System.Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+       
     }
+ 
+ 
 }
