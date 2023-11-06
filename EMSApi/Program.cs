@@ -6,8 +6,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var connectionstring = builder.Configuration.GerConnectionString
-builder.Services.AddDbContext<EmsDbContext>(options=>options.UseSqlServer(configuration.GetConnectionString("MyCon")));
+var connectionString = builder.Configuration.GerConnectionString("MyCon");
+builder.Services.AddDbContext<EmsDbContext>(options=>options.UseSqlServer(connectionString));
+builder.Services.AddTransient<IDept,DepartmentRepository>();
+
 
 var app = builder.Build();
 

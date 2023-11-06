@@ -5,11 +5,13 @@ namespace EMSApi.Models{
         Department FindDept(int id);
         void AddDept(Department dept);
         void EditDept(Department dept);
-        void DeleteDept(int id)
+        void DeleteDept(int id);
 
     }
-    public class DepartmentRepository[
-        
-    ]
+    // public class DepartmentRepository{
+
+    // }
+
+    
 }
 
