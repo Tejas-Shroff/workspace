@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.Extensions.Logging;
  
-namespace MoviesApp.Controllers
-{
+namespace MoviesApp.Controllers{
+
     [ApiController]
     [Route("/[controller]")]
+
     public class DetailController : ControllerBase
     {
         MovieContext context = new MovieContext();
@@ -18,7 +19,7 @@ namespace MoviesApp.Controllers
         public IActionResult Get(int id)
         {
             var data = from d in context.Details where d.MovieId == id select new{
-                Artist = d.Actor, Role=d.Role,MovieName=d.Movie.Name,Year = d.Movie.YearReleased};
+                Artist = d.Actor, Role=d.Role,MovieName=d.Movie.Name,Year = d.Movie.YearRelease};
                 return Ok(data);
         }
         [HttpGet]
@@ -31,6 +32,8 @@ namespace MoviesApp.Controllers
         }
         [HttpGet]
         [Route("ListDetails/{id}")]
+ 
+ 
  
         public IActionResult Get(int? id)
         {
@@ -45,12 +48,16 @@ namespace MoviesApp.Controllers
             }
             return Ok(data);
         }
+
          [HttpPost]
         [Route("AddDetails")]
-        public IActionResult Post([FromBody] Detail detail)
-        {
+
+        public IActionResult Post([FromBody] Detail detail){
+
             if(ModelState.IsValid){
+
                 try{
+                    
                     context.Details.Add(detail);
                     context.SaveChanges();
 
@@ -58,12 +65,14 @@ namespace MoviesApp.Controllers
             
 
                 catch(System.Exception ex){
+
                     return BadRequest(ex.InnerException.Message);
                 }
 
             }
 
             return Created("Record Added",detail);
+
         }
 
     }
