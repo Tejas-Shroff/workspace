@@ -33,7 +33,7 @@ namespace MoviesApp.Controllers{
         [HttpGet]
         [Route("ListDetails/{id}")]
  
- 
+
  
         public IActionResult Get(int? id)
         {
@@ -66,7 +66,9 @@ namespace MoviesApp.Controllers{
 
                 catch(System.Exception ex){
 
-                    return BadRequest(ex.InnerException.Message);
+                    return BadRequest(ex.InnerException.Message);    
+                    
+                          
                 }
 
             }
