@@ -68,7 +68,7 @@ using MovieApp.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
- 
+using MovieApp.ViewModel;
 namespace MovieApp.Controllers
 {
     [ApiController]

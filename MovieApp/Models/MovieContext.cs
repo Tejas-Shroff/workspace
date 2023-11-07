@@ -8,7 +8,7 @@ namespace MovieApp.Models{
     public class MovieContext : DbContext{
         public virtual DbSet<Detail> Details { get; set; }
         public virtual DbSet<Movie> Movies { get; set; }
-        public virtual DbSet<Movie_VM> Movie_VM {get;set;}
+        public virtual DbSet<Movie_VM> Movie_VMs {get;set;}
         public MovieContext(){}
         public MovieContext(DbContextOptions<MovieContext> options) : base(options){}
         
