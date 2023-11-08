@@ -8,3 +8,4 @@ public class Booking{
     public TimeSpan Timeslot {get;set;}
     
 }
+
