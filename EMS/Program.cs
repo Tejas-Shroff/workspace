@@ -10,6 +10,7 @@ var connectionstring = builder.Configuration.GetConnectionString("myConn");
 builder.Services.AddDbContext<EmsDbContext>(options=> options.UseSqlServer(connectionstring));
 
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
