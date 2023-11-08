@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SimpleComponent implements OnInit {
 
   weekdays:string[]=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+  age : number = 26 
 
   constructor() { }
 
