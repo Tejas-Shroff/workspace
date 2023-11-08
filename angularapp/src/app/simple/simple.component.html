@@ -11,7 +11,7 @@
 </ng-template>
 <hr>
 <ul *ngFor="let day of weekdays">
-    <ng-container *ngIf="(day =='sunday' || day =='saturday');else elseTemplate">
+    <ng-container *ngIf="(day =='Sunday' || day =='Saturday');else elseTemplate">
         <li style ="color:red">{{day}} is a weekend</li>
     </ng-container>
     <ng-template #elseTemplate>
