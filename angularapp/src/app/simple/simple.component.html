@@ -1,4 +1,11 @@
 <h3>Week days</h3>
-<ul *ngFor = "let day in weekdays">
-<li>{{i+1}}{{day}}</li>
+<ul *ngFor = "let day of weekdays; let i=index">
+<li>{{i+1}}---{{day}}</li>
 </ul>
+
+<ng-container *ngIf ="age >=26;else elseTemplate">
+    <b>suitable for Marriage</b>
+</ng-container>
+<ng-template #elseTemplate>
+    <u>Not Ready</u>
+</ng-template>
