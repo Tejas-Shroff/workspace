@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore.Design;
 using MovieApp.ViewModel;
-
 namespace MovieApp.Models{
 
     public class MovieContext : DbContext{
@@ -13,7 +12,9 @@ namespace MovieApp.Models{
         public MovieContext(DbContextOptions<MovieContext> options) : base(options){}
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
+
             if(!optionsBuilder.IsConfigured){
+
                 optionsBuilder.UseSqlServer("User ID=sa;password=examlyMssql@123; server=localhost;Database=;EntDb;trusted_connection=false;Persist Security Info=False;Encrypt=False");
             }
         }
@@ -23,5 +24,7 @@ namespace MovieApp.Models{
 
 
         }
+
     }
+
 }
