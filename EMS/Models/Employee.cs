@@ -10,7 +10,7 @@ public partial class Employee
     public int EmpId { get; set; }
 
     [Required(ErrorMessage="Name is requried")]
-    public string? Name { get; set; } =null!;
+    public string? Name { get; set; } 
     [Range(10000,90000,ErrorMessage="Salary must be betwwen 10000 and 90000")]
 
     public int Salary { get; set; }
@@ -23,7 +23,7 @@ public partial class Employee
     [Display(Name =" Email")]
     [DataType(DataType.EmailAddress)]
 
-    public string? Email { get; set; } = null!;
+    public string? Email { get; set; }
 
     [DataType(DataType.Date)]
     [DisplayFormat(ApplyFormatInEditMode=true,DataFormatString="{0:yyyy-mm-dd}")]
@@ -32,5 +32,5 @@ public partial class Employee
 
     public DateTime Dob { get; set; }
 
-    public virtual Department Dept { get; set; } = null!;
+    public Department Dept { get; set; }
 }

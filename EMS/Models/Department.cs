@@ -18,5 +18,5 @@ public partial class Department
     [StringLength(25,MinimumLength =3,ErrorMessage ="City Must be 3 Chars")]
     public string? Location { get; set; }
 
-    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    public ICollection<Employee> Employees { get; set; } 
 }
