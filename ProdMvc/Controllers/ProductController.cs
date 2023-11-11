@@ -80,3 +80,55 @@ namespace ProdMvc.Controllers;
     }
 
    
+
+
+
+
+
+public IActionResult Edit(int id){
+    var data = context.Product.Find(id);
+    return View(d);
+
+}
+[HttpPost]
+public IActionResult Edit(Product P){
+    if(ModelState.IsValid){
+        Product pr = context.Product.Find(P.id);
+        pr.Name=P.Name;
+        pr.Price=P.Price;
+        pr.Stock=P.Stock;
+        context.SaveChanges();
+        return RedirectToAction("List");
+    }
+    return View();
+}
+public IActionResult Delete(int id){
+
+
+    var d = context.Product.Find(id);
+    return View(d);
+
+}
+[HttpPost]
+public IActionResult Delete(Product p){
+
+    Product P = context.Product.Find(p.id);
+    context.Product.Remove(P);
+    context.SaveChanges();
+    return RedirectToAction('List');
+
+   
+}
+
+public IActionResult Display(int id){
+    var data = context.Product.Where(m => m.EmployeeId == id);
+    return View(data);
+}
+
+public IActionResult Create(){
+    return View();
+}
+[HttpPost]
+public IActionResult Create(Product P){
+    
+}
