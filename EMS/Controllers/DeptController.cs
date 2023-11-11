@@ -1,5 +1,6 @@
 namespace EMS.Controllers;
 
+using EMS.Exceptions;
 using EMS.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,17 +15,26 @@ public class DeptController:Controller{
 
     public IActionResult List(){
 
-        List<Department>? data =null;
-        try{
-            data=context.Departments.ToList();
-            if(data.Count == 0)
-            throw new Exception();
-        }catch(System.Exception){
+        // List<Department>? data =null;
+        // try{
+        //     data=context.Departments.ToList();
+        //     if(data.Count == 0)
+        //     throw new Exception();
+        // }catch(System.Exception){
 
-            ViewBag.ErrorMessage="0 records present";
-            return View("Error");
+        //     ViewBag.ErrorMessage="0 records present";
+        //     return View("Error");
+        // }
+        // return View(data);
+
+        var data = context.Departments.ToList();
+        if(data.Count()==0){
+            throw new CustomException("O record found");
         }
-        return View(data);
+        return View();
+        
+
+        
         
 
         // var data =context.Departments.ToList();
