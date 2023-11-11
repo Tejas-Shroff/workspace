@@ -32,5 +32,5 @@ public partial class Employee
 
     public DateTime Dob { get; set; }
 
-    public Department Dept { get; set; }
+    public Department? Dept { get; set; }
 }
