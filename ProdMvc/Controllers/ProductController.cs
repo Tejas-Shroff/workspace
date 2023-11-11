@@ -91,7 +91,7 @@ public IActionResult Edit(int id){
 
 }
 [HttpPost]
-public IActionResult Edit(Product P){
+public IActionResult Edit(Product P,int id ){
     if(ModelState.IsValid){
         Product pr = context.Product.Find(P.id);
         pr.Name=P.Name;
@@ -130,5 +130,14 @@ public IActionResult Create(){
 }
 [HttpPost]
 public IActionResult Create(Product P){
+    if(ModelState.IsValid){
+
+        context.Product.Add(P);
+        context.SaveChanges();
+        return RedirectToAction("List");
+        }
+
+    return View();
+
+    }
     
-}
