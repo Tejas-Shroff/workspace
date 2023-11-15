@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [];
+{path: ListMovies,component}
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
