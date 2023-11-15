@@ -5,11 +5,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListMovieComponent } from './list-movie/list-movie.component';
+import { FindmovieComponent } from './findmovie/findmovie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListMovieComponent
+    ListMovieComponent,
+    FindmovieComponent
     
   ],
   imports: [
