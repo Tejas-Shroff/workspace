@@ -11,7 +11,7 @@ private url='https://8080-eccdeabbadafaabfabcaaaceeafebeccaddbefddaf.premiumproj
 
   constructor(private httpclient:HttpClient) { }
     getAllMovies():Observable<IMovie[]>{
-      return this.httpclient.get<IMovie[]>('${this.url}/listmovies')
+      return this.httpclient.get<IMovie[]>(`${this.url}/ListMovies`)
     }
    
 }
