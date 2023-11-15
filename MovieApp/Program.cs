@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using MovieApp.Models;
 var builder = WebApplication.CreateBuilder(args);
@@ -10,11 +11,12 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("MyCon");
 builder .Services.AddDbContext<MovieContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddCors(
+
     options=>
     {
-        option.AddDefaultPolicy(builder=>
+        options.AddDefaultPolicy(builder=>
     {
-        builder.AllowAnyHeader().AllowAnyMethod.AllowAnyOrigin();
+        builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
     });
 });
 builder.Services.AddEndpointsApiExplorer();
