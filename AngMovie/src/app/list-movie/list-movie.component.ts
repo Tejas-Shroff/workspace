@@ -12,7 +12,8 @@ export class ListMovieComponent implements OnInit {
 
 
   constructor(private movieservice : MovieService) {
-    this.movieservice.getAllMovies().subscribe(data=>{this.moviedata=data})
+    this.movieservice.getAllMovies().subscribe(data =>{this.moviedata=data})
+    console.log(this.moviedata)
    }
 
   ngOnInit() {
