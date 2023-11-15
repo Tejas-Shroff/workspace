@@ -9,6 +9,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 var connectionString = builder.Configuration.GetConnectionString("MyCon");
 builder .Services.AddDbContext<MovieContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddCors(
+    options=>
+    {
+        option.AddDefaultPolicy(builder=>
+    {
+        builder.AllowAnyHeader().AllowAnyMethod.AllowAnyOrigin();
+    });
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
