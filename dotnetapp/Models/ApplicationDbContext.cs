@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.AspNetCore.Mvc;
 // using Microsoft.AspNetCore.Metadata;
 using System;
 namespace dotnetapp.Models;
